@@ -300,8 +300,8 @@ This improves performance for:
 ## Setup Instructions
 
 ```bash
-git clone <repo>
-cd project
+git clone https://github.com/Karan-codes1/Finance-Dashboard-Backend.git
+cd Finance-Dashboard-Backend
 npm install
 ```
 
