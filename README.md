@@ -132,6 +132,8 @@ Authorization: Bearer TOKEN
 GET /api/records
 ```
 
+
+
 * Viewer → only own records
 * Analyst/Admin → all records
 
@@ -139,8 +141,7 @@ Supports filters:
 
 * `type`
 * `category`
-* `startDate`
-* `endDate`
+* `type & category`
 
 ---
 
