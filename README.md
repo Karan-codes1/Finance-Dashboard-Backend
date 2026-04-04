@@ -95,6 +95,9 @@ Uses **JWT-based authentication**
 ```http
 POST /api/auth/register
 ```
+<p align="center">
+  <img src="./screenshots/records.png" alt="Records API" width="600"/>
+</p>
 
 ### Login
 
@@ -140,6 +143,10 @@ GET /api/records
 Supports filters:
 
 * `type`
+ <p align="center">
+  <img src="./screenshots/Filter_records_based_on_type.png" alt="Records API" width="600"/>
+</p>
+
 * `category`
 * `type & category`
 
@@ -169,13 +176,18 @@ DELETE /api/records/:id
 GET /api/dashboard/summary
 ```
 
+<p align="center">
+  <img src="./screenshots/Dashboard_summary.png" alt="Records API" width="600"/>
+</p>
+
+
 Returns:
 
 ```json
 {
-  "totalIncome": 5000,
-  "totalExpense": 2000,
-  "netBalance": 3000
+  "totalIncome": 50000
+  "totalExpense": 29200,
+  "netBalance": 20800
 }
 ```
 
@@ -186,13 +198,20 @@ Returns:
 ```http
 GET /api/dashboard/category
 ```
+<p align="center">
+  <img src="./screenshots/Category_wise_summary.png" alt="Records API" width="600"/>
+</p>
+
+
 
 Example:
 
 ```json
 {
-  "food": 800,
-  "salary": 5000
+  "rent":20000
+  "travel":8000
+  "food": 1200,
+  "salary": 50000
 }
 ```
 
