@@ -70,7 +70,7 @@ export const getMonthly = async (req, res) => {
   try {
     let filter = {};
 
-    // 👀 Viewer restriction
+    // Viewer restriction
     if (req.user.role === "viewer") {
       filter.user = req.user._id;
     }

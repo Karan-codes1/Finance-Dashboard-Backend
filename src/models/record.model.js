@@ -38,7 +38,7 @@ const recordSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-recordSchema.index({ user: 1, date: -1 }); // For faster queries by user and date
+recordSchema.index({ user: 1, date: -1 }); 
 
 const Record = mongoose.model("Record", recordSchema);
 

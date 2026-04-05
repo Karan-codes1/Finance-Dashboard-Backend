@@ -45,7 +45,7 @@ export const getRecords = async (req, res) => {
 
     let filter = {};
 
-    // 🔥 ROLE LOGIC
+    // ROLE LOGIC
     if (req.user.role === "viewer") {
       filter.user = req.user._id;
     }
@@ -61,7 +61,7 @@ export const getRecords = async (req, res) => {
       if (endDate) filter.date.$lte = new Date(endDate);
     }
 
-    // 🔍 SEARCH
+    // SEARCH
     if (search) {
       filter.$or = [
         { category: { $regex: search, $options: "i" } },
