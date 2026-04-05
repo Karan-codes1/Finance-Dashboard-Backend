@@ -23,9 +23,6 @@ app.use(express.json());
 app.use("/api", apiLimiter);
 app.use("/api/auth", authLimiter);
 
-// Connect to DB
-await connectDB();
-
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/records", recordRoutes);
@@ -36,13 +33,18 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-// Protected test route
-// app.get("/api/test-admin", verifyToken, allowRoles("admin"), (req, res) => {
-//   res.json({ message: "Welcome Admin" });
-// });
 
 const PORT = 5001;
+const startServer = async () => {
+  try {
+    await connectDB();
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Failed to start server:", error);
+    process.exit(1);
+  }
+};
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+startServer();

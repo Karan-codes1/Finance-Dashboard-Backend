@@ -15,7 +15,8 @@ const recordSchema = new mongoose.Schema({
   amount: {
     type: Number,
     required: true,
-    min:  0
+    min: [0, "Amount cannot be negative"],
+    max: [999999999, "Amount is too large"]
   },
   type: {
     type: String,
@@ -31,7 +32,9 @@ const recordSchema = new mongoose.Schema({
     default: Date.now
   },
   note: {
-    type: String
+    type: String,
+    trim: true,
+    maxlength: [500, "Note cannot exceed 500 characters"]
   }
 }, { timestamps: true });
 
