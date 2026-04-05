@@ -129,8 +129,11 @@ Authorization: Bearer TOKEN
 
 #### Get Records
 
+
 ```http
 GET /api/records
+
+Supports pagination, search, and filtering via query parameters.
 ```
 <p align="center">
   <img src="./screenshots/records.png" alt="Records API" width="600"/>
@@ -147,8 +150,31 @@ Supports filters:
 </p>
 
 * `category`
-* `type & category`
+* `type + category`
 
+Supports:
+* `Pagination`
+  * `page` (default: 1)
+  * `limit` (max: 50)
+
+```json
+{
+  "page": 1,
+  "limit": 5,
+  "total": 22,
+  "totalPages": 4,
+  "hasNextPage": true,
+  "hasPrevPage": false,
+  "data": [ ...records ]
+}
+```
+
+* Search:
+  * `search` : searches in type and category
+ 
+    * `Search` : /api/records?search=food
+    * `Search + Pagination` : /api/records?search=salary&page=1&limit=5
+    * `Search + Filters` : /api/records?search=food&type=expense
 ---
 
 #### Update Record (Admin only)
@@ -184,7 +210,7 @@ Returns:
 
 ```json
 {
-  "totalIncome": 50000
+  "totalIncome": 50000,
   "totalExpense": 29200,
   "netBalance": 20800
 }
@@ -207,8 +233,8 @@ Example:
 
 ```json
 {
-  "rent":20000
-  "travel":8000
+  "rent":20000,
+  "travel":8000,
   "food": 1200,
   "salary": 50000
 }
@@ -254,9 +280,15 @@ Example:
 * **Role-based data filtering** instead of multiple APIs
 * **Records linked to users** for ownership
 * **Admin-controlled data creation**
-* Simple and scalable API design
+* Designed with scalability and real-world use cases in mind
 
 ---
+## Additional Features
+
+* Pagination to handle large datasets efficiently  
+* Search support for quick record lookup  
+* Query-based filtering (type, category)  
+* Rate limiting to prevent API abuse, with stricter limits on authentication routes
 
 ##  Performance Optimization
 
@@ -330,7 +362,7 @@ npm start
 ##  Conclusion
 
 This project showcases:
-
+* Production-ready API practices (pagination, search, rate limiting)
 * Clean backend architecture
 * Role-based access control
 * Data aggregation logic
