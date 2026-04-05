@@ -132,9 +132,9 @@ Authorization: Bearer TOKEN
 
 ```http
 GET /api/records
+```
 
 Supports pagination, search, and filtering via query parameters.
-```
 <p align="center">
   <img src="./screenshots/records.png" alt="Records API" width="600"/>
 </p>
@@ -170,7 +170,7 @@ Supports:
 ```
 
 * Search:
-  * `search` : searches in type and category
+  * `search` : Searches in type and category
  
     * `Search` : /api/records?search=food
     * `Search + Pagination` : /api/records?search=salary&page=1&limit=5
