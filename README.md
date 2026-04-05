@@ -95,9 +95,7 @@ Uses **JWT-based authentication**
 ```http
 POST /api/auth/register
 ```
-<p align="center">
-  <img src="./screenshots/records.png" alt="Records API" width="600"/>
-</p>
+
 
 ### Login
 
@@ -134,8 +132,9 @@ Authorization: Bearer TOKEN
 ```http
 GET /api/records
 ```
-
-
+<p align="center">
+  <img src="./screenshots/records.png" alt="Records API" width="600"/>
+</p>
 
 * Viewer → only own records
 * Analyst/Admin → all records
