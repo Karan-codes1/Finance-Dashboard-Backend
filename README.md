@@ -112,6 +112,7 @@ Returns:
 }
 ```
 
+
 ---
 
 ##  API Endpoints
@@ -157,6 +158,8 @@ Supports:
   * `page` (default: 1)
   * `limit` (max: 50)
 
+Returns:
+
 ```json
 {
   "page": 1,
@@ -190,6 +193,44 @@ PATCH /api/records/:id
 ```http
 DELETE /api/records/:id
 ```
+
+---
+
+
+### Managing Users (Admin only)
+
+#### Get All Users
+
+```http
+GET /api/users
+```
+Authorization: Bearer TOKEN
+
+Update User Role
+
+```http
+PATCH /api/users/:id/role
+```
+
+```json
+{
+  "role": "analyst"
+}
+```
+
+Toggle User Status
+
+```http
+PATCH /api/users/:id/status
+```
+Delete User (Soft Delete)
+
+```http
+DELETE /api/users/:id
+```
+
+- Sets isActive = false  
+- User is not permanently removed
 
 ---
 
@@ -241,6 +282,11 @@ Example:
 ```
 
 ---
+### Recent Activity
+```http
+GET /api/records?limit=5&sort=-date
+```
+Returns 5 most recent transactions for the user.
 
 ### Monthly Trends
 
@@ -252,7 +298,6 @@ Example:
 
 ```json
 {
-  "2026-03": -800,
   "2026-04": 5000
 }
 ```
@@ -281,6 +326,7 @@ Example:
 * **Records linked to users** for ownership
 * **Admin-controlled data creation**
 * Designed with scalability and real-world use cases in mind
+* Schema-level validation using Mongoose to ensure data integrity and prevent invalid inputs
 
 ---
 ## Additional Features
@@ -289,6 +335,7 @@ Example:
 * Search support for quick record lookup  
 * Query-based filtering (type, category)  
 * Rate limiting to prevent API abuse, with stricter limits on authentication routes
+* Soft delete implementation for users using an `isActive` flag (no permanent data loss)
 
 ##  Performance Optimization
 
@@ -351,21 +398,17 @@ npm start
 
 ---
 
-##  Notes
-
-* Designed for clarity and maintainability
-* Focused on backend architecture rather than UI
-* Demonstrates real-world API design patterns
+## Assumptions Made
+- Records are always created by admins (viewers/analysts can't create)
+- Date format follows ISO 8601
+- Categories are free-text (not predefined list)
+- Monthly trends show net balance, not separate income/expense
 
 ---
 
 ##  Conclusion
 
-This project showcases:
-* Production-ready API practices (pagination, search, rate limiting)
-* Clean backend architecture
-* Role-based access control
-* Data aggregation logic
-* Scalable API design
+* This project demonstrates a backend system with role-based access control, schema validation, pagination, filtering, rate limiting, and soft deletion.
+* It is designed to reflect a realistic production-style API with clean structure and scalable patterns.
 
 ---
