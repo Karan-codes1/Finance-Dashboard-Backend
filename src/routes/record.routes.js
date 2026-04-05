@@ -3,7 +3,7 @@ import {
   createRecord,
   getRecords,
   updateRecord,
-  deleteRecord
+  deleteRecord,
 } from "../controllers/record.controller.js";
 
 import { verifyToken, allowRoles } from "../middleware/auth.middleware.js";

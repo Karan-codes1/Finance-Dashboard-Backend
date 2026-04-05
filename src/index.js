@@ -8,6 +8,7 @@ import { connectDB } from './models/db.js';
 import { verifyToken, allowRoles } from "./middleware/auth.middleware.js";
 import recordRoutes from "./routes/record.routes.js";
 import dashboardRoutes from "./routes/dashboard.routes.js";
+import userRoutes from "./routes/user.routes.js";
 
 import { apiLimiter } from "./middleware/rateLimiter.middleware.js";
 import { authLimiter } from "./middleware/rateLimiter.middleware.js";
@@ -27,6 +28,7 @@ app.use("/api/auth", authLimiter);
 app.use("/api/auth", authRoutes);
 app.use("/api/records", recordRoutes);
 app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/users", userRoutes);
 
 // Test route
 app.get("/", (req, res) => {
