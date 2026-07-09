@@ -1,5 +1,4 @@
 #  Finance Dashboard Backend
-> Submitted for Zorvyn Backend Developer Intern Assignment - April 2026
 ##  Overview
 
 This project is a backend system for a **Finance Dashboard** that manages financial records with **role-based access control** and provides **summary analytics**.
