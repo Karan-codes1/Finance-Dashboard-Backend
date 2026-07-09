@@ -30,12 +30,6 @@ app.use("/api/records", recordRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/users", userRoutes);
 
-// Test route
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
-
-
 const PORT = 5001;
 const startServer = async () => {
   try {
